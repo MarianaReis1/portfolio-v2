@@ -1,0 +1,14 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@*": ["src/*"],
+      "@img/*": ["src/assets/img/*"]
+    }
+  },
+  "files": [
+    "node_modules/gsap/types/index.d.ts"
+  ]
+}
