@@ -1,0 +1,31 @@
+// globals
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+
+// typgraphy
+.alpha {
+    @apply font-display font-black text-18xl leading-none md:text-14xl;
+}
+
+.beta {
+    @apply font-display font-semibold text-9xl md:text-6xl;
+}
+
+
+
+//buttton
+.btn--primary {
+    @apply block border-2 border-green font-display font-semibold px-5 py-1 rounded-full text-lg text-green w-fit md:text-base hover:border-blue hover:text-blue transition-colors duration-200;
+}
