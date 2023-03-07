@@ -43,7 +43,7 @@ const navItems = [
 </script>
 
 <template>
-    <nav class="sticky top-20 h-screen flex flex-col items-start gap-7.5 z-40 lg:bg-white lg:w-full lg:p-3 lg:top-0 lg:flex-row lg:h-auto lg:justify-center lg:items-center lg:shadow-lg">
+    <nav class="sticky top-20 h-fit flex flex-col items-start gap-7.5 z-40 lg:bg-white lg:w-full lg:p-3 lg:top-0 lg:flex-row lg:h-auto lg:justify-center lg:items-center lg:shadow-lg">
         <a href="/" class="group block -left-4 relative lg:left-0">
             <img src="@img/icon-logo.svg" class="transition-transform duration-300 group-hover:scale-110" alt="Mariana Reis Logo"/>
         </a>
