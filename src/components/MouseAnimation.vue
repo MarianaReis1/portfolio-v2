@@ -4,6 +4,7 @@ import gsap from "gsap";
 
 const circle = ref();
 const animation = ref();
+const initialSize = ref(50)
 
 onMounted(() => {
     window.addEventListener('mousemove', (e) => mouseAnimation(e))
@@ -14,20 +15,22 @@ onUnmounted(() => {
 });
 
 const mouseAnimation = (e:Object) => {
-    animation.value = gsap.set(circle.value, {
+    gsap.set(circle.value, {
         top: (e.clientY),
         left: e.clientX,
-        width: () => setTimeout(() =>  500, 150),
-        height: () => setTimeout(() => 500, 150),
     });
 
-    if(circle.value.clientHeight > document.body.clientHeight){
-        gsap.killTweensOf(circle.value)
-    }
+    gsap.to(circle.value, {
+        width: '200vw',
+        height: document.body.offsetHeight,
+        borderRadius: 0,
+        ease: 'power.out',
+        duration: 50
+    });
 }
 
 </script>
 
 <template>
-    <div ref="circle" class="rounded-full w-52 h-40 max-w-screen max-h-max bg-purple/10 fixed blur-2xl -translate-x-1/2 -translate-y-1/2 -z-[1]"></div>
+    <div ref="circle" class="rounded-full w-40 h-40 max-w-screen max-h-max bg-purple/10 fixed blur-2xl -translate-x-1/2 -translate-y-1/2 -z-[1]"></div>
 </template>
