@@ -1,3 +1,5 @@
+import type { Project } from '@types/projectItem';
+
 // Icons Tools
 import iconJs from '@img/icon-js.svg';
 import iconCss from '@img/icon-css.svg';
@@ -17,26 +19,12 @@ import iconXd from '@img/icon-xd.svg';
 import iconSketch from '@img/icon-sketch.svg';
 
 
-interface Work {
-    id: string;
-    title: string;
-    descriptionShort: string;
-    descriptionLong: string;
-    siteLink: string;
-    siteCode: any;
-    mobileImg: string;
-    desktopImg: string;
-    desktopVideo: string;
-    desktopExtraImgs: Array<String>;
-    iconTools: Array<Object>;
-}
-
 // Project Thecosystems
 import thecoMob from '@img/mockups/thecosystem_mob.png';
 import thecoDesk from '@img/mockups/thecosystem_desk.png';
 import thecoVideo from '@assets/videos/thecosystem-video.mp4';
 
-const thecosystem: Work = {
+const thecosystem: Project = {
     id: "01",
     title: 'Thecosystems',
     descriptionShort: `<p>
@@ -53,6 +41,7 @@ const thecosystem: Work = {
     mobileImg: thecoMob,
     desktopImg: thecoDesk,
     desktopVideo: thecoVideo,
+    desktopExtraImgs: [],
     iconTools: [
         {
             icon: iconJs,
@@ -87,7 +76,7 @@ import mmrgMob from '@img/mockups/mmrg_mob.png';
 import mmrgDesk from '@img/mockups/mmrg_desk.png';
 import mmrgVideo from '@assets/videos/mmrg-video.mp4';
 
-const mmrg: Work = {
+const mmrg: Project = {
     id: "02",
     title: 'MMR-Global',
     descriptionShort: `<p>
@@ -104,6 +93,7 @@ const mmrg: Work = {
     mobileImg: mmrgMob,
     desktopImg: mmrgDesk,
     desktopVideo: mmrgVideo,
+    desktopExtraImgs: [],
     iconTools: [
         {
             icon: iconJs,
@@ -143,7 +133,7 @@ import bmjDesk2 from '@img/mockups/bmj-gilead_desk.png';
 import bmjDesk3 from '@img/mockups/bmj-veklury_desk.png';
 import bmjDesk4 from '@img/mockups/bmj-vifor_desk.png';
 
-const bmj: Work = {
+const bmj: Project = {
     id: "03",
     title: 'The BMJ',
     descriptionShort: `<p>
@@ -206,10 +196,10 @@ const bmj: Work = {
     ]
 }
 
-const works: Array<Object> = [
+const projects: Project[] = [
     thecosystem,
     mmrg,
     bmj
 ]
 
-export default works;
+export default projects;

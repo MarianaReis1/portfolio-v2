@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import ButtonAnimated from '@components/ButtonAnimated.vue';
+
+import ButtonPrimary from '@components/ButtonPrimary.vue';
 import ModalButton from '@components/ModalButton.vue';
 import ModalContent from '@components/ModalContent.vue';
-import works from '@assets/projects'
-import { ref, onMounted } from 'vue';
 
+import { ref, onMounted } from 'vue';
+import projects from '@assets/projects';
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const firstImg = ref([])
@@ -48,38 +50,52 @@ onMounted(() => {
 </script>
 
 <template>
-    <section id="works" class="scroll-mt-10 md:scroll-mt-20">
+    <section id="projects" class="scroll-mt-10 md:scroll-mt-20">
 
-        <div v-for="work in works" :key="work.id" class="flex gap-10 justify-between mb-40 md:flex-col-reverse md:mb-64">
+        <div v-for="project in projects" :key="project.id" class="flex gap-10 justify-between mb-40 md:flex-col-reverse md:mb-64">
+
             <div ref="container" class="w-1/2 relative md:w-full">
-                <img ref="firstImg" :src="work.desktopImg" alt="" class="drop-shadow-xl w-4/5">
-                <img v-if="work.mobileImg" ref="secondImg" :src="work.mobileImg" alt="" class="absolute top-20 right-0 max-w-[160px] w-1/3 drop-shadow-xl">
-                <div class="contents" v-if="work.desktopExtraImgs">
-                    <img ref="secondImg" v-for="item in work.desktopExtraImgs" :src="item" alt="" class="absolute top-40 right-0 w-4/5 drop-shadow-xl md:top-16"/>
+
+                <img ref="firstImg" :src="project.desktopImg" alt="" class="drop-shadow-xl w-4/5">
+
+                <img v-if="project.mobileImg" ref="secondImg" :src="project.mobileImg" alt="site on mobile mockup" class="absolute top-20 right-0 max-w-[160px] w-1/3 drop-shadow-xl">
+
+                <div v-else-if="project.desktopExtraImgs" class="contents">
+                    <img ref="secondImg" :src="project.desktopExtraImgs[0]"  alt="site on desktop mockup" class="absolute top-40 right-0 w-4/5 drop-shadow-xl md:top-16"/>
                 </div>
+
             </div>
 
             <div class="text-right flex flex-col items-end gap-7.5 w-1/2 md:w-full md:gap-5">
-                <h1 class="alpha">{{ work.id }}</h1>
-                <h2 class="beta">{{ work.title }}</h2>
-                <div class="ml-5" v-html="work.descriptionShort"></div>
-                <ul class="flex items-center gap-4 flex-wrap md:gap-2.5 md:justify-end">
-                    <li v-for="item in work.iconTools" :key="item.alt">
+
+                <h1 class="alpha">{{ project.id }}</h1>
+
+                <h2 class="beta">{{ project.title }}</h2>
+
+                <div class="ml-5" v-html="project.descriptionShort"></div>
+
+                <ul v-if="project.iconTools.length" class="flex items-center gap-4 justify-end flex-wrap md:gap-2.5 md:justify-end">
+
+                    <li v-for="item in project.iconTools" :key="item.alt">
                         <img class="h-10 md:h-8" :src="item.icon" :alt="item.alt"/>
                     </li>
+
                 </ul>
+
                 <div class="flex items-center justify-end gap-5 flex-wrap md:gap-5">
-                    <ButtonAnimated v-if="work.siteLink" :href="work.siteLink">
+                    <ButtonPrimary v-if="project.siteLink" :href="project.siteLink">
                         view site
-                    </ButtonAnimated>
-                    <ButtonAnimated v-if="work.siteCode" :href="work.siteCode">
+                    </ButtonPrimary>
+
+                    <ButtonPrimary v-if="project.siteCode" :href="project.siteCode">
                         view code
-                    </ButtonAnimated>
-                    <ModalButton  class="btn--primary">
+                    </ButtonPrimary>
+
+                    <ModalButton>
                         view more
 
                         <template #modal>
-                            <ModalContent :work="work"></ModalContent>
+                            <ModalContent :project="project"></ModalContent>
                         </template>
                     </ModalButton>
                 </div>

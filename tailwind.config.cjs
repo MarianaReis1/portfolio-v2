@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	content: ['./src/**/*.{astro,html,js,jsx,ts,tsx,vue}'],
+	darkMode: ['class', '[data-theme="dark"]'],
 	theme: {
 		fontFamily: {
 			'body': ['Montserrat', 'sans-serif'],
@@ -44,7 +45,8 @@ module.exports = {
 				DEFAULT: 'currentColor',
 			},
 			blue: {
-				DEFAULT: '#0D0D49'
+				DEFAULT: '#0D0D49',
+				800: '#03032D'
 			},
 			green: {
 				DEFAULT: '#45C0B8'

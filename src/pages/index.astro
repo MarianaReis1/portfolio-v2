@@ -1,16 +1,16 @@
 ---
 import '@styles/app.scss'
-import Nav from '@components/Nav.vue';
+import SiteNav from '@components/SiteNav.vue';
 import Layout from '@layouts/Layout.astro';
-import IntroSection from '@components/IntroSection.astro';
+import IntroSection from '@components/IntroSection.vue';
 import WorksSection from '@components/WorksSection.vue';
-import SiteFooter from '@components/SiteFooter.astro';
+import SiteFooter from '@components/SiteFooter.vue';
 import MouseAnimation from '@components/MouseAnimation.vue';
 ---
 
 <Layout title="Mariana Reis">
 	<div class="flex flex-row-reverse gap-12 lg:flex-col">
-		<Nav class="w-32"></Nav>
+		<SiteNav client:load></SiteNav>
 
 		<main class="w-full max-w-7xl ml-auto pl-20 lg:px-10">
 			<IntroSection></IntroSection>

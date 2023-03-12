@@ -1,16 +1,21 @@
 <script setup lang="ts">
 
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, PropType } from 'vue';
 import ModalBase from '@components/ModalBase.vue';
+import ButtonPrimary from '@components/ButtonPrimary.vue';
 
 const props = defineProps({
-    wideModal: { type: Boolean, default:false },
+    wideModal: { 
+        type: Boolean as PropType<boolean>,
+        default: false 
+    },
     isOpen: {
-        type: Boolean, default: false,
+        type: Boolean  as PropType<boolean>,
+        default: false,
     }
 })
 
-const shouldShow = ref(false)
+const shouldShow = ref<boolean>(false)
 
 const open = () => {
     shouldShow.value = true
@@ -31,9 +36,9 @@ onMounted(() => {
 </script>
 
 <template>
-    <button v-bind="$attrs" @click="open">
+    <ButtonPrimary @click="open">
         <slot></slot>
-    </button>
+    </ButtonPrimary>
 
     <ModalBase 
         @close="close()"
